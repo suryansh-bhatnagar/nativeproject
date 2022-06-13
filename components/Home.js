@@ -1,8 +1,10 @@
 import React from 'react';
 
 import {Text, View, StyleSheet, Pressable} from 'react-native';
+import { AuthContext } from '../context/context';
 
 const Home = ({navigation}) => {
+  const {signOut} = React.useContext(AuthContext);
   return (
     <View style={{flex: 1, backgroundColor: '#6c5ce7'}}>
       <View
@@ -20,6 +22,11 @@ const Home = ({navigation}) => {
           style={styles.pressableButton}
           onPress={() => navigation.navigate('AddInventory')}>
           {() => <Text style={styles.buttonText}>Add Inventory</Text>}
+        </Pressable>
+        <Pressable
+          style={styles.pressableButton}
+          onPress={() => signOut()}>
+          {() => <Text style={styles.buttonText}>Sign Out</Text>}
         </Pressable>
       </View>
     </View>
